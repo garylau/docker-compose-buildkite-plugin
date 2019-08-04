@@ -54,7 +54,8 @@ steps:
         image-repository: ${DOCKER_REPO-buildkiteci/docker-compose-buildkite-plugin}
         config: tests/composefiles/docker-compose.v2.0.yml
 
-  - wait
+  - wait: ~
+    continue_on_failure: true
   - label: run after build with v2.0
     plugins:
       ${BUILDKITE_REPO}#${BUILDKITE_COMMIT}:
